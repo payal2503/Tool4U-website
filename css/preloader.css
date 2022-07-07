@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Play';
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items:center ;
+    min-height: 100vh;
+    background-color: #e3fdee;
+}
+.loadcontainer{
+    position: relative;
+    width: 600px;
+    
+}
+
+.loadcontainer .loading{
+    position: relative;
+    display: flex;
+    background-image: linear-gradient(to right,#80ff72 ,#7ee8fa); 
+    
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    
+}
+.loadcontainer .loading::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: rgba(255, 255, 255, 0.123);
+    z-index: 10;
+    pointer-events: none;
+}
+.loadcontainer .loading::after{
+    content: '';
+    position: absolute;
+    top: 27px;
+    right: 20px;
+    width: 10px;
+    height: 10px;
+    background-image: linear-gradient(315deg, #5de6de 0%, #b58ecc 74%);
+    border-radius: 10px;
+    box-shadow: 0 0 5px #22e4e3,
+                0 0 10px #22e4e3,
+                0 0 40px #22e4e3 ;
+    animation: animatelight 1s linear infinite;
+
+}
+@keyframes animatelight{
+    0%,49.99%{
+        background: #22e4e3;
+        box-shadow: 0 0 5px #22e4e3,
+                0 0 10px #22e4e3,
+                0 0 40px #22e4e3 ;
+
+    }
+    50%,100%{
+        box-shadow: none;
+        background: #111;
+    }
+}
+
+.loadcontainer .loading .text{
+    position: relative;
+    width: 70px;
+    color: #fff;
+    text-align: right;
+    letter-spacing: 3px;
+    padding-right: 20px;
+}
+.loadcontainer .loading .percent{
+    position: relative;
+    top: 2px;
+    width: calc(100% - 140px);
+    height: 20px;
+    background: #151515;
+    border-radius: 20px;
+    margin: 0 10px;
+    box-shadow: inset 0 0 10px #000;
+    overflow: hidden;
+}
+.loadcontainer .loading .percent .progress{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(45deg,#22ffde,#2196f3);
+    animation: animate 6s ease-in-out infinite;
+
+}
+@keyframes animate{
+    0%{
+        width: 0%;
+        left: 0;
+    }
+    50%{
+        width: 100%;
+        left: 0;
+    }
+    100%{
+        width: 100%;
+        left: 100%;
+    }
+}
